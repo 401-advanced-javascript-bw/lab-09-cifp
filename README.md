@@ -7,7 +7,8 @@
 ### Links and Resources
 
 - [submission PR](http://xyz.com)
-- [travis](https://www.travis-ci.com/401-advanced-javascript-bw/lab-08-data-modeling)
+- [travis](https://www.travis-ci.com/401-advanced-javascript-bw/lab-09-cifp)
+- [heroku](https://lab-09-cifp.herokuapp.com/)
 
 ### Models
 
