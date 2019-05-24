@@ -6,7 +6,7 @@
 
 ### Links and Resources
 
-- [submission PR](http://xyz.com)
+- [submission PR](https://github.com/401-advanced-javascript-bw/lab-09-cifp/pull/1)
 - [travis](https://www.travis-ci.com/401-advanced-javascript-bw/lab-09-cifp)
 - [heroku](https://lab-09-cifp.herokuapp.com/)
 
