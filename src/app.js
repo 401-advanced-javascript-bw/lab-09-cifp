@@ -1,5 +1,8 @@
 'use strict';
 
+//signup: echo '{"username":"name","password":"pass"}' | http post :3000/signup
+//signin: http post :3000/signin -a username:password
+
 /**
  * API Server Module
  * @module src/app
@@ -13,9 +16,10 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 // Esoteric Resources
-const errorHandler = require( `${cwd}/src/middleware/500.js`);
-const notFound = require( `${cwd}/src/middleware/404.js` );
-const v1Router = require( `${cwd}/src/api/v1.js` );
+const errorHandler = require(`${cwd}/src/middleware/500.js`);
+const notFound = require(`${cwd}/src/middleware/404.js`);
+const authRouter = require(`${cwd}/src/auth/router.js`);
+const v1Router = require(`${cwd}/src/api/v1.js`);
 
 // Prepare the express app
 const app = express();
@@ -24,21 +28,22 @@ const app = express();
 app.use(cors());
 app.use(morgan('dev'));
 
+//Parsers
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
+app.use(authRouter);
 app.use(v1Router);
 
 // Catchalls
 app.use(notFound);
 app.use(errorHandler);
 
-
 let start = (port = process.env.PORT) => {
   app.listen(port, () => {
     console.log(`Server Up on ${port}`);
   });
 };
-  
-module.exports = {app,start};
+
+module.exports = { app, start };

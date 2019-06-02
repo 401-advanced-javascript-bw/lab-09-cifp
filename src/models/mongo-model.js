@@ -15,6 +15,7 @@ class Model {
    * @param {*} _id
    */
   get(_id) {
+    console.log('getting things');
     let queryObject = _id ? { _id } : {};
     return this.schema.find(queryObject);
   }
@@ -24,6 +25,7 @@ class Model {
    */
   post(record) {
     let newRecord = new this.schema(record);
+    console.log('posting things to movies');
     return newRecord.save();
   }
   /**
@@ -32,6 +34,12 @@ class Model {
    * @param {*} record
    */
   put(_id, record) {
+    return this.schema.findByIdAndUpdate(_id, record, {
+      new: true,
+      upsert: true
+    });
+  }
+  patch(_id, record) {
     return this.schema.findByIdAndUpdate(_id, record, { new: true });
   }
   /**

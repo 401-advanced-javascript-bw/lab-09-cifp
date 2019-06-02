@@ -7,33 +7,48 @@
  */
 
 const cwd = process.cwd();
-
 const express = require('express');
-
 const modelFinder = require(`${cwd}/src/middleware/model-finder.js`);
-
 const swagger = require('swagger-ui-express');
 const swaggerDocs = require('../../docs/config/swagger.json');
-
 const router = express.Router();
-
-router.use('/api/v1/doc', swagger.serve, swagger.setup(swaggerDocs));
-
-router.use('/docs', express.static('docs'));
+const auth = require(`${cwd}/src/auth/middleware.js`);
 
 // Evaluate the model, dynamically
 router.param('model', modelFinder);
 
-// API Routes
-router.get('/api/v1/:model', handleGetAll);
-router.post('/api/v1/:model', handlePost);
+router.use('/api/v1/doc', swagger.serve, swagger.setup(swaggerDocs));
+router.use('/docs', express.static('docs'));
 
+// API Routes
+router.get('/', (req, res, next) => {
+  res.status(200).send('this is the home page!');
+});
 router.get('/api/v1/:model/:id', handleGetOne);
-router.put('/api/v1/:model/:id', handlePut);
-router.delete('/api/v1/:model/:id', handleDelete);
+router.get('/api/v1/:model', handleGetAll);
+router.post('/api/v1/:model', auth('create'), handlePost);
+router.put('/api/v1/:model/:id', auth('update'), handlePut);
+router.patch('./api/v1:model/:id', auth('update'), handlePatch);
+router.delete('/api/v1/:model/:id', auth('delete'), handleDelete);
 
 // Route Handlers
+//Get One ==================================================
+/**
+ *get specifict data from model
+ * @param {object} request
+ * @param {object} response
+ * @param {function} next
+ * @return {object}
+ */
+function handleGetOne(request, response, next) {
+  console.log('getting things');
+  request.model
+    .get(request.params.id)
+    .then(result => response.status(200).json(result[0]))
+    .catch(next);
+}
 
+//Get all ===================================================
 /**
  * get all data from model
  * @param {object} request
@@ -53,19 +68,7 @@ function handleGetAll(request, response, next) {
     })
     .catch(next);
 }
-/**
- *get specifict data from model
- * @param {object} request
- * @param {object} response
- * @param {function} next
- * @return {object}
- */
-function handleGetOne(request, response, next) {
-  request.model
-    .get(request.params.id)
-    .then(result => response.status(200).json(result[0]))
-    .catch(next);
-}
+//Post ===================================================
 /**
  * Add data through model
  * @param {object} request
@@ -79,6 +82,7 @@ function handlePost(request, response, next) {
     .then(result => response.status(200).json(result))
     .catch(next);
 }
+//Put ===================================================
 /**
  * Update specific data through model
  * @param {object} request
@@ -92,6 +96,21 @@ function handlePut(request, response, next) {
     .then(result => response.status(200).json(result))
     .catch(next);
 }
+//Patch ===================================================
+/**
+ *
+ * @param {object} request
+ * @param {object} response
+ * @param {function} next
+ * @return {object}
+ */
+function handlePatch(request, response, next) {
+  request.model
+    .patch(request.params.id, request.body)
+    .then(result => response.status(200).json(result))
+    .catch(next);
+}
+//Delete ===================================================
 /**
  * Delete specific data through model
  * @param {object} request
