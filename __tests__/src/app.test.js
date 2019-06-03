@@ -16,47 +16,43 @@ describe('api server', () => {
   });
 
   it('should respond with a 404 on an invalid method', () => {
-    return mockRequest.post('/api/v1/players/12').then(results => {
+    return mockRequest.post('/api/v1/movies/12').then(results => {
       expect(results.status).toBe(404);
     });
   });
 
   it('should be able to post to a valid model', () => {
     let obj = {
-      name: 'John',
-      bats: 'R',
-      throws: 'R',
-      position: 'C',
-      team: 'Bunnies'
+      title: 'forrest gump',
+      genre: 'drama/comedy drama',
+      rating: 8.8
     };
 
     return mockRequest
-      .post('/api/v1/players')
+      .post('/api/v1/movies')
       .send(obj)
       .then(results => {
         expect(results.status).toBe(200);
-        expect(results.body.team).toEqual(obj.team);
+        expect(results.body.title).toEqual(obj.title);
       });
   });
 
   it('following a post to a valid model, should find a single record', () => {
     let obj = {
-      name: 'John',
-      bats: 'R',
-      throws: 'R',
-      position: 'C',
-      team: 'Bunnies'
+      title: 'forrest gump',
+      genre: 'drama/comedy drama',
+      rating: 8.8
     };
 
     return mockRequest
-      .post('/api/v1/players')
+      .post('/api/v1/movies')
       .send(obj)
       .then(results => {
         return mockRequest
-          .get(`/api/v1/players/${results.body._id}`)
+          .get(`/api/v1/movies/${results.body._id}`)
           .then(list => {
             expect(list.status).toBe(200);
-            expect(list.body.team).toEqual(obj.team);
+            expect(list.body.title).toEqual(obj.title);
           });
       });
   });
