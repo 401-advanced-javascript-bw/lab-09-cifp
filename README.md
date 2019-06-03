@@ -1,8 +1,8 @@
 # ![CF](http://i.imgur.com/7v5ASc8.png) LAB
 
-## lab-09-cifp
+## lab-15-api-server
 
-### Author: Bonnie Wang
+### Author:Bonnie Wang
 
 ### Links and Resources
 
@@ -12,21 +12,25 @@
 
 ### Models
 
-#### `categories-model.js`
-
-#### `teams-model.js`
-
-#### `players-model.js`
-
-#### `memory-model.js`
+#### `movies-model.js`
 
 #### `mongo-model.js`
 
 ### Schemas
 
-#### `players-schema.js`
+#### `movies-schema.js`
 
-#### `teams-schema.js`
+#### `middleware.js`
+
+##### authenticate user/token
+
+#### `router.js -> router`
+
+#### `router2.js -> router for user capabilities`
+
+#### `users-model.js -> generate key/token, compare passwords`
+
+#### `google.js -> google OAuth`
 
 ### Setup
 
@@ -37,15 +41,16 @@
 
 #### Running the app
 
+- `npm i`
 - `npm start`
-- `nodemon`
-- `mongod --dbpath/[path to db]`
+- Endpoint: `/singin/`
+  - sings in user.
+- Endpoint: `/oauth/`
+  - verify user
+- Endpoint: `/movies`
+  - get, post, put, delete depending on role
 
 #### Tests
 
 - `npm test`
 - can GET, POST, PUT, and DELETE categories and products.
-
-#### UML
-
-![](./images/uml.jpg)
