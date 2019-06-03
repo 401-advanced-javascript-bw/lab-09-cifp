@@ -1,0 +1,373 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "lab nine api",
+    "description": "categories, teams, players",
+    "version": "0.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "paths": {
+    "/api/v1/teams": {
+      "post": {
+        "description": "add new team",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/body"
+              },
+              "examples": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "team added",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:8080"
+        }
+      ]
+    },
+    "/api/v1/categories": {
+      "post": {
+        "description": "add category",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/body_1"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\n    \"name\":\"baseball\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "category added",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:8080"
+        }
+      ]
+    },
+    "/api/v1/players": {
+      "post": {
+        "description": "add player",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/body_2"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\"name\":\"Bonnie\",\n    \"position\":\"P\",\n    \"throws\":\"R\",\n    \"bats\":\"L\",\n    \"team\":\"thebest\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "player added",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:8080"
+        }
+      ]
+    },
+    "/api/v1/players/": {
+      "get": {
+        "description": "get player",
+        "responses": {
+          "200": {
+            "description": "got player",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:8080"
+        }
+      ]
+    },
+    "/api/v1/categories/": {
+      "get": {
+        "description": "get categories",
+        "responses": {
+          "200": {
+            "description": "got categories",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:8080"
+        }
+      ]
+    },
+    "/api/v1/teams/": {
+      "get": {
+        "description": "get teams",
+        "responses": {
+          "200": {
+            "description": "Auto generated using Swagger Inspector",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:8080"
+        }
+      ],
+      "/api/v1/players/5ce722f67f30672ffa2c2652": {
+        "put": {
+          "description": "Update players by id",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/body"
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\n    \n            \"_id\": \"5ce722f67f30672ffa2c2652\",\n            \"name\": \"changed\",\n            \"position\": \"P\",\n            \"throws\": \"R\",\n            \"bats\": \"L\",\n            \"team\": \"thebest\",\n            \"__v\": 0\n}"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "updated player",
+              "content": {
+                "application/json; charset=utf-8": {
+                  "schema": {
+                    "type": "string"
+                  },
+                  "examples": {}
+                }
+              }
+            }
+          },
+          "servers": [
+            {
+              "url": "http://localhost:8080"
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ]
+      },
+      "/api/v1/teams/5ce723437f30672ffa2c2653": {
+        "put": {
+          "description": "update teams by id",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/body_1"
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\n    \n            \"name\":\"theworst\"\n}"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "updated team",
+              "content": {
+                "application/json; charset=utf-8": {
+                  "schema": {
+                    "type": "string"
+                  },
+                  "examples": {}
+                }
+              }
+            }
+          },
+          "servers": [
+            {
+              "url": "http://localhost:8080"
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ]
+      },
+      "/api/v1/categories/cb46e5d0-20de-4bba-8b12-40a9d2bd6597": {
+        "delete": {
+          "description": "delete category by id",
+          "responses": {
+            "200": {
+              "description": "deleted category",
+              "content": {
+                "application/json; charset=utf-8": {
+                  "schema": {
+                    "type": "string"
+                  },
+                  "examples": {}
+                }
+              }
+            }
+          },
+          "servers": [
+            {
+              "url": "http://localhost:8080"
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "body": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "body_1": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "body_2": {
+        "type": "object",
+        "properties": {
+          "bats": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "position": {
+            "type": "string"
+          },
+          "team": {
+            "type": "string"
+          },
+          "throws": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
