@@ -1,7 +1,7 @@
 {
   "name": "api-server-solution",
   "version": "1.0.0",
-  "description": "",
+  "description": "## lab-15-api-server",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -14,7 +14,7 @@
     "testEnvironment": "node"
   },
   "keywords": [],
-  "author": "",
+  "author": "bonnie wang",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
@@ -32,5 +32,17 @@
     "supertest": "^3.3.0",
     "swagger-ui-express": "^4.0.2",
     "uuid": "^3.3.2"
-  }
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/401-advanced-javascript-bw/lab-15-api-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/401-advanced-javascript-bw/lab-15-api-server/issues"
+  },
+  "homepage": "https://github.com/401-advanced-javascript-bw/lab-15-api-server#readme"
 }
